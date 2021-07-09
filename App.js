@@ -4,10 +4,16 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import {WelcomeScreen} from './app/screens/WelcomeScreen';
 import {ViewImageScreen} from './app/screens/ViewImageScreen';
+import { AppButton } from './app/components/AppButton';
 
 export default function App() {
   return (
-    <ViewImageScreen></ViewImageScreen>
+    <View style={styles.container}>
+    <AppButton title="Login" 
+    onPress={()=>{console.log('Login Button')}}>
+      
+    </AppButton>
+    </View>
   );
 }
 
