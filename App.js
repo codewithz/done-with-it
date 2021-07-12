@@ -10,14 +10,13 @@ import { Card } from './app/components/Card';
 export default function App() {
   return (
     
-  <View style={styles.container}>
-    <Card
-    title="Red Jacket for sale!"
-    subTitle="$100" image={require("./app/assets/jacket.jpg")}
-    > 
+    <Card title="Red Jacket for Sale!!" subTitle="$100" 
+    image={require("./app/assets/jacket.jpg")}>
+
+      
     </Card>
 
-  </View>
+  // <WelcomeScreen></WelcomeScreen>
   
   );
 }
