@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import { FlatList } from 'react-native'
 
 import { ListItem } from '../components/ListItem'
+import { ListItemSeparator } from '../components/ListItemSeparator'
 
 const messages=[
     {
@@ -40,7 +41,8 @@ export  function MessagesScreen(props) {
             />
         }
         ItemSeparatorComponent={()=>
-        <View style={{width:'100%',height:1,backgroundColor:'#000'}} />}
+            <ListItemSeparator/>
+        }
      >
 
      </FlatList>
