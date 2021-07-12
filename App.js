@@ -11,7 +11,7 @@ import { Card } from './app/components/Card';
 export default function App() {
   return (
    
-      <ListingDetailsScreen></ListingDetailsScreen>
+     <ViewImageScreen></ViewImageScreen>
 
 
 
