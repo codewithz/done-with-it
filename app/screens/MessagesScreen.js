@@ -39,6 +39,8 @@ export  function MessagesScreen(props) {
                 image={item.image}
             />
         }
+        ItemSeparatorComponent={()=>
+        <View style={{width:'100%',height:1,backgroundColor:'#000'}} />}
      >
 
      </FlatList>
