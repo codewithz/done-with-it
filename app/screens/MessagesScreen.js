@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { FlatList } from 'react-native'
 
@@ -6,7 +6,7 @@ import { ListItem } from '../components/ListItem'
 import { ListItemSeparator } from '../components/ListItemSeparator'
 import { ListItemDeleteAction } from '../components/ListItemDeleteAction'
 
-const messages=[
+const initialMessages=[
     {
         id:1,
         title:'Title 1',
@@ -28,6 +28,19 @@ const messages=[
 ]
 
 export  function MessagesScreen(props) {
+
+    const [messages,setMessages]=useState(initialMessages);
+
+    const handleDelete = (message)=>{
+        //Delete the message from the array 
+        const filteredMessages =messages.filter(m=>m.id !==message.id);
+        setMessages(filteredMessages);
+
+
+        //Call the server to delete it from DB
+    }
+
+
     return (
     <View>
      <FlatList
@@ -43,7 +56,9 @@ export  function MessagesScreen(props) {
                     console.log('List Item Pressed',item)
                 }}
                 renderRightActions={()=>(
-                 <ListItemDeleteAction />
+                 <ListItemDeleteAction 
+                    onPress={()=> handleDelete(item)}
+                 />
                 )}
             />
         }
