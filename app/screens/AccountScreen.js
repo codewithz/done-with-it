@@ -13,12 +13,20 @@ const menuItems=[
             name:'format-list-bulleted',
             backgroundColor:colors.primary
         }
+    },
+    {
+        title:'My Messages',
+        icon:{
+            name:'email',
+            backgroundColor:colors.secondary
+        }
     }
+
 ]
 
 export  function AccountScreen() {
     return (
-       <Screen>
+       <Screen style={styles.screen}>
         <View style={styles.container}>
             <ListItem 
             title="Zartab M Nakhwa"
@@ -43,10 +51,18 @@ export  function AccountScreen() {
             />
         }
         >
-
-
         </FlatList>
         </View>
+
+        <ListItem 
+            title="Logout"
+            ImageComponent={
+                <Icon
+                    name="logout"
+                    backgroundColor="#ffe66d"
+                />
+            }
+        />
 
        </Screen>
     )
@@ -55,5 +71,8 @@ export  function AccountScreen() {
 const styles = StyleSheet.create({
     container:{
         marginVertical:20,
+    },
+    screen:{
+        backgroundColor:colors.light,
     }
 })
