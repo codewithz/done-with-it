@@ -30,6 +30,7 @@ const initialMessages=[
 export  function MessagesScreen(props) {
 
     const [messages,setMessages]=useState(initialMessages);
+    const [refreshing,setRefreshing]=useState(false);
 
     const handleDelete = (message)=>{
         //Delete the message from the array 
@@ -60,11 +61,31 @@ export  function MessagesScreen(props) {
                     onPress={()=> handleDelete(item)}
                  />
                 )}
+                
             />
         }
         ItemSeparatorComponent={()=>
             <ListItemSeparator/>
         }
+        refreshing={refreshing}
+        onRefresh={()=>{
+            setMessages([...initialMessages,
+                {
+                    id:4,
+                    title:'Title 4',
+                    description:'Description for List #4',
+                    image:require("../assets/zartab.jpg")
+                },
+                {
+                    id:5,
+                    title:'Title 5',
+                    description:'Description for List #5',
+                    image:require("../assets/zartab.jpg")
+                }
+            ])
+        }
+        }
+
      >
 
      </FlatList>
