@@ -41,6 +41,12 @@ export  function MessagesScreen(props) {
                 onPress={()=>{
                     console.log('List Item Pressed',item)
                 }}
+                renderRightActions={()=>(
+                    <View style={{
+                        backgroundColor:'red',
+                        width:70,
+                    }}></View>
+                )}
             />
         }
         ItemSeparatorComponent={()=>
