@@ -5,17 +5,18 @@ import colors from '../config/colors'
 
 import { AppText } from './AppText'
 
-export  function ListItem({title,subtitle,image,onPress,renderRightActions}) {
+export  function ListItem({title,subtitle,image,ImageComponent,onPress,renderRightActions}) {
     return (
     <Swipeable renderRightActions={renderRightActions}>
     <TouchableHighlight 
     onPress={onPress}
     underlayColor={colors.light}>
         <View style={styles.container}>
-           <Image style={styles.image} source={image}></Image>
-           <View>
+            {ImageComponent}
+         { image && <Image style={styles.image} source={image}></Image>}
+           <View style={styles.detailsContainer}>
                <AppText style={styles.title} >{title}</AppText>
-               <AppText style={styles.subtitle}>{subtitle}</AppText>
+            { subtitle &&  <AppText style={styles.subtitle}>{subtitle}</AppText>}
            </View>
         </View>
     </TouchableHighlight>
@@ -34,7 +35,11 @@ const styles = StyleSheet.create({
         width:70,
         height:70,
         borderRadius:35,
-        marginRight:10,
+       
+    },
+    detailsContainer:{
+        marginLeft:10,
+        justifyContent:"center",
     },
     subtitle:{
         color:colors.medium,
