@@ -4,6 +4,7 @@ import { FlatList } from 'react-native'
 
 import { ListItem } from '../components/ListItem'
 import { ListItemSeparator } from '../components/ListItemSeparator'
+import { ListItemDeleteAction } from '../components/ListItemDeleteAction'
 
 const messages=[
     {
@@ -42,10 +43,7 @@ export  function MessagesScreen(props) {
                     console.log('List Item Pressed',item)
                 }}
                 renderRightActions={()=>(
-                    <View style={{
-                        backgroundColor:'red',
-                        width:70,
-                    }}></View>
+                 <ListItemDeleteAction />
                 )}
             />
         }
