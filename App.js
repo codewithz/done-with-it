@@ -11,12 +11,20 @@ import { MessagesScreen } from './app/screens/MessagesScreen';
 import Constants from 'expo-constants';
 import { Screen } from './app/components/Screen';
 
+import { Icon } from './app/components/Icon';
+
 export default function App() {
 
 
   return (
     <Screen>
-    <MessagesScreen></MessagesScreen>
+      <Icon 
+        name="email"
+        size={50}
+        backgroundColor="red"
+        iconColor="white"
+      ></Icon>
+ 
     </Screen>
 
   );
