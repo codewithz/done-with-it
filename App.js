@@ -15,6 +15,7 @@ import { Icon } from './app/components/Icon';
 import { ListItem } from './app/components/ListItem';
 import { AccountScreen } from './app/screens/AccountScreen';
 //import { ListingsScreen } from './app/screens/ListingsScreen';
+import { AppTextInput } from './app/components/AppTextInput';
 
 export default function App() {
 
@@ -22,36 +23,7 @@ export default function App() {
   return (
     <Screen>
 
-    <TextInput
-      placeholder="First Name"
-      style={{
-        borderBottomColor:"#000",
-        borderBottomWidth:1,
-
-      }}
-      onChangeText={(text)=>setFirstName(text)}
-      secureTextEntry
-     
-    
-    >
-
-    </TextInput>
-    <Text>{firstName}</Text>
-
-    <TextInput
-    placeholder="Test"
-    style={{
-      borderBottomColor:"red",
-      borderBottomWidth:1,
-
-    }}
-    keyboardType="numeric"
-    clearButtonMode="always"
-    >
-
-    </TextInput>
-   
-    
+    <AppTextInput placeholder="Username" icon="email"></AppTextInput>
     </Screen>
 
   );
