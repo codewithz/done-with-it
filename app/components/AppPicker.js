@@ -13,7 +13,14 @@ export  function AppPicker({icon,placeholder}) {
                      style={styles.icon}
          
          />}
-           <AppText>{placeholder}</AppText>
+           <AppText style={styles.text}>{placeholder}</AppText>
+           <MaterialCommunityIcons 
+            name="chevron-down"
+            size={20}
+            color={colors.medium}
+            style={styles.icon}
+           
+           />
         </View>
     )
 }
@@ -34,6 +41,9 @@ const styles = StyleSheet.create({
         fontSize:18,
         fontFamily:Platform.OS==="android"?"Roboto":"Avenir",
         color:colors.dark,
+    },
+    text:{
+        flex:1
     }
 
 })
