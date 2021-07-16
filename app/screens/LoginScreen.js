@@ -7,6 +7,8 @@ import { AppTextInput } from '../components/AppTextInput'
 import { AppButton } from '../components/AppButton'
 import { AppText } from '../components/AppText';
 import { ErrorMessage } from '../components/ErrorMessage';
+import { AppFormField } from '../components/AppFormField';
+import { SubmitButton } from '../components/SubmitButton';
 
 
 import { Screen } from '../components/Screen'
@@ -32,38 +34,34 @@ export  function LoginScreen(props) {
             onSubmit={values=>console.log(values)}
             validationSchema={validationSchema}
            >
-            {({handleChange,handleSubmit,errors,setFieldTouched,touched})=>
+            {()=>
             (
              <React.Fragment>
 
-            <AppTextInput
-            autoCapitalize="none"
-            autoCorrect={false}
-            icon="email"
-            placeholder="Email"
-            keyboardType="email-address"
-            textContentType="emailAddress"
-            onChangeText={handleChange("email")}
-            onBlur={()=>setFieldTouched("email")}
-        
-           />
-         <ErrorMessage error={errors.email} visible={touched.email} />
+            <AppFormField 
+                 name="email"
+                 autoCapitalize="none"
+                 autoCorrect={false}
+                 icon="email"
+                 placeholder="Email"
+                 keyboardType="email-address"
+                 textContentType="emailAddress"
+            />
 
-           <AppTextInput
+
+           <AppFormField
+            name="password"
             autoCapitalize="none"
             autoCorrect={false}
             icon="lock"
             placeholder="Password"
             secureTextEntry={true}
             textContentType="password"
-            onChangeText={handleChange("password")}
-            onBlur={()=>setFieldTouched("password")}
+            
            />
-        <ErrorMessage error={errors.password}  visible={touched.password}/>
+        
 
-           <AppButton title="Login" 
-           onPress={handleSubmit}
-           />
+            <SubmitButton title="Login" />
 
 
             </React.Fragment>
