@@ -9,6 +9,7 @@ import { AppText } from '../components/AppText';
 import { ErrorMessage } from '../components/ErrorMessage';
 import { AppFormField } from '../components/AppFormField';
 import { SubmitButton } from '../components/SubmitButton';
+import { AppForm } from '../components/AppForm';
 
 
 import { Screen } from '../components/Screen'
@@ -29,14 +30,11 @@ export  function LoginScreen(props) {
             
            ></Image>
 
-           <Formik
+           <AppForm
             initialValues={{email:'',password:''}}
             onSubmit={values=>console.log(values)}
-            validationSchema={validationSchema}
-           >
-            {()=>
-            (
-             <React.Fragment>
+            validationSchema={validationSchema} >
+           
 
             <AppFormField 
                  name="email"
@@ -59,15 +57,11 @@ export  function LoginScreen(props) {
             textContentType="password"
             
            />
-        
-
+    
             <SubmitButton title="Login" />
 
 
-            </React.Fragment>
-            )
-            }
-           </Formik>
+           </AppForm>
 
           
        </Screen>
