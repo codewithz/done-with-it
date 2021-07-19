@@ -1,6 +1,6 @@
 
 import React,{useState,useEffect} from 'react';
-import { StyleSheet, Text, View ,StatusBar,TextInput,Switch} from 'react-native';
+import { StyleSheet, Text, View ,StatusBar,TextInput,Switch,Button,Image} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from 'expo-permissions';
 
@@ -27,6 +27,8 @@ import { ListingEditScreen } from './app/screens/ListingEditScreen';
 
 export default function App() {
 
+ const [imageUri,setImageUri] =useState();
+
   const requestPermission=async ()=>{
 
     const result=await Permissions.askAsync(Permissions.CAMERA_ROLL);
@@ -43,9 +45,26 @@ export default function App() {
   useEffect(()=>{
      requestPermission();
   }, [])
+
+  const selectImage=async ()=>{
+    try {
+      const result=await ImagePicker.launchImageLibraryAsync();
+      if(!result.cancelled){
+          setImageUri(result.uri);
+      }
+       
+    } catch (error) {
+      console.log('Error Reading an image',error);
+    }
+   
+  }
   
   return (
-    <Screen></Screen>
+    <Screen>
+      <Button title="Select Image" onPress={selectImage} />
+      <Image source={{uri:imageUri}} style={{width:200,height:200}}/>
+     
+    </Screen>
   );
 }
 
