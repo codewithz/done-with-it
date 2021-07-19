@@ -22,6 +22,7 @@ import { AppPicker } from './app/components/AppPicker';
 import { LoginScreen } from './app/screens/LoginScreen';
 import { RegisterScreen } from './app/screens/RegisterScreen';
 import { ListingEditScreen } from './app/screens/ListingEditScreen';
+import { ImageInput } from './app/components/ImageInput';
 
 
 
@@ -61,8 +62,9 @@ export default function App() {
   
   return (
     <Screen>
-      <Button title="Select Image" onPress={selectImage} />
+      <Button title="Select Image" onPress={selectImage}/>
       <Image source={{uri:imageUri}} style={{width:200,height:200}}/>
+      <ImageInput imageUri={imageUri}/>
      
     </Screen>
   );
