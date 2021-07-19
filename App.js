@@ -1,6 +1,7 @@
 
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import { StyleSheet, Text, View ,StatusBar,TextInput,Switch} from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
 
 import { WelcomeScreen } from './app/screens/WelcomeScreen';
 import { ViewImageScreen } from './app/screens/ViewImageScreen';
@@ -25,10 +26,19 @@ import { ListingEditScreen } from './app/screens/ListingEditScreen';
 
 export default function App() {
 
+  const requestPermission=async ()=>{
+    const result= await ImagePicker.requestCameraRollPermissionsAsync();
+     if(!result.granted){
+       alert('You need to enable permission to access the libreay')
+     }
+  }
+
+  useEffect(async ()=>{
+     requestPermission();
+  }, [])
   
   return (
-  <ListingEditScreen></ListingEditScreen>
-
+    <Screen></Screen>
   );
 }
 
