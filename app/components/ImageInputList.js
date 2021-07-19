@@ -7,7 +7,8 @@ import { AppText } from './AppText';
 
 export function ImageInputList({imageUris=[],onRemoveImage,onAddImage}) {
  return (
-     <ScrollView horizontal>
+     <View>
+     <ScrollView horizontal >
       <View style={styles.container}>
           {imageUris.map(uri=>(
               <View   key={uri} style={styles.image} >
@@ -23,6 +24,7 @@ export function ImageInputList({imageUris=[],onRemoveImage,onAddImage}) {
        
       </View>
       </ScrollView>
+      </View>
     )
 }
 
