@@ -1,10 +1,27 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { StyleSheet, View,Image,TouchableWithoutFeedback, Alert } from 'react-native';
 import colors from '../config/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 
 export function ImageInput({imageUri,onChangeImage}) {
+
+    useEffect(()=>{
+        requestPermission();
+     }, [])
+
+    const requestPermission=async ()=>{
+
+        const result=await Permissions.askAsync(Permissions.CAMERA_ROLL);
+        if(!result.granted){
+          alert('You need to enable permission to access the libreay')
+        }
+    
+        // const result= await ImagePicker.requestCameraRollPermissionsAsync();
+        //  if(!result.granted){
+        //    alert('You need to enable permission to access the libreay')
+        //  }
+      }
 
     const handlePress= ()=>{
          if(!imageUri){
