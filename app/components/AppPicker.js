@@ -7,7 +7,7 @@ import { Screen } from './Screen'
 import { PickerItem } from './PickerItem'
 
 
-export  function AppPicker({icon,items,placeholder,selectedItem,onSelectItem}) {
+export  function AppPicker({icon,items,placeholder,PickerItemComponent=PickerItem,selectedItem,onSelectItem}) {
 
     const [modalVisible,setModalVisible]=useState(false);
     return (
@@ -44,7 +44,8 @@ export  function AppPicker({icon,items,placeholder,selectedItem,onSelectItem}) {
                 data={items}
                 keyExtractor={item=>item.value.toString()}
                 renderItem={({item})=>
-                <PickerItem
+                <PickerItemComponent
+                    item={item}
                     label={item.label}
                     onPress={()=>{
                         setModalVisible(false);
