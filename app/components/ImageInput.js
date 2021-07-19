@@ -3,6 +3,7 @@ import { StyleSheet, View,Image,TouchableWithoutFeedback, Alert } from 'react-na
 import colors from '../config/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
+import * as Permissions from 'expo-permissions';
 
 export function ImageInput({imageUri,onChangeImage}) {
 
