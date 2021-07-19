@@ -5,7 +5,7 @@ import { useFormikContext } from 'formik';
 import { AppPicker } from './AppPicker';
 import { ErrorMessage } from './ErrorMessage';
 
-export function AppFormPicker({items,name,PickerItemComponent,placeholder}) {
+export function AppFormPicker({items,name,numberOfColumns,PickerItemComponent,placeholder}) {
    const {errors,touched,values,setFieldValue} =useFormikContext();
  return (
      <React.Fragment>
@@ -16,6 +16,7 @@ export function AppFormPicker({items,name,PickerItemComponent,placeholder}) {
             onSelectItem={(item)=>setFieldValue(name,item)}
             placeholder={placeholder}
             selectedItem={values[name]}
+            numberOfColumns={numberOfColumns}
         />
         <ErrorMessage error={errors[name]} visible={touched[name]}  />
 
