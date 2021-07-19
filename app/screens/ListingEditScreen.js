@@ -18,10 +18,23 @@ const validationSchema=Yup.object().shape({
 
 })
 
+
+  
+  
+ 
+  
+   
+  
+
 const categories = [
-    { label: "Furniture", value: 1 ,backgroundColor:"red",icon:"email"},
-    { label: "Clothing", value: 2 ,backgroundColor:"green",icon:"lock"},
-    { label: "Camera", value: 3 ,backgroundColor:"blue",icon:"apps"},
+    { label: "Furniture", value: 1 ,backgroundColor:"#fc5c65",icon:"floor-lamp"},
+    { label: "Cars", value: 2 ,backgroundColor:"#fd9644",icon:"car"},
+    { label: "Cameras", value: 3 ,backgroundColor:"#fed330",icon:"camera"},
+    { label: "Games", value: 4 ,backgroundColor:"#26de81",icon:"cards-playing-outline"},
+    { label: "Clothing", value: 5 ,backgroundColor:"#2bcbba",icon:"shoe-heel"},
+    { label: "Sports", value: 6 ,backgroundColor:"#45aaf2",icon:"basketball"},
+    { label: "Movies & Music", value: 7 ,backgroundColor:"#4b7bec",icon:"headphones"},
+   
   ];
 
 
