@@ -81,7 +81,13 @@ const TabNavigator =()=>(
         }
       }
     />
-    <Tab.Screen name="Account" component={Account}/>
+    <Tab.Screen name="Account" component={Account} 
+      options={
+        {
+          tabBarIcon:({size,color})=> <MaterialCommunityIcons name="account" size={size} color={color}/>
+        }
+      }
+    />
   </Tab.Navigator>
 )
 
