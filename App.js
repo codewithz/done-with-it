@@ -7,6 +7,7 @@ import { useNavigation } from '@react-navigation/core';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { Screen } from './app/components/Screen';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const Link = ()=> {
   const navigation=useNavigation();
@@ -73,7 +74,13 @@ const TabNavigator =()=>(
 
     }}
   >
-    <Tab.Screen name="Feed" component={Tweets}/>
+    <Tab.Screen name="Feed" component={Tweets}
+      options={
+        {
+          tabBarIcon:({size,color})=> <MaterialCommunityIcons name="home" size={size} color={color}/>
+        }
+      }
+    />
     <Tab.Screen name="Account" component={Account}/>
   </Tab.Navigator>
 )
