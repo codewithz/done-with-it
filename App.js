@@ -11,7 +11,7 @@ const Link = ()=> {
   const navigation=useNavigation();
 return(
   <Button title="Click Me" 
-    onPress={()=>navigation.navigate("TweetDetails",{id:1})}
+    onPress={()=>navigation.navigate("TweetDetails",{id:1,name:'Zartab'})}
   />
 );
 }
@@ -34,8 +34,11 @@ const Stack=createStackNavigator();
 
 const StackNavigator=()=>(
   <Stack.Navigator initialRouteName="Tweets">
-    <Stack.Screen name="TweetDetails" component={TweetDetails}/>
     <Stack.Screen name="Tweets" component={Tweets}/>
+    <Stack.Screen name="TweetDetails"
+     component={TweetDetails}
+     options={({route})=>({title:route.params.name})}
+     />
   </Stack.Navigator>
 )
 
