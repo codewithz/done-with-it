@@ -1,17 +1,40 @@
 
 import React,{useState,useEffect} from 'react';
 import { StyleSheet, Text, View ,StatusBar,TextInput,Switch,Button,Image} from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
 
-import { ListingEditScreen } from './app/screens/ListingEditScreen';
+import { Screen } from './app/components/Screen';
+
+const Tweets= ()=>(
+  <Screen>
+    <Text>Tweets</Text>
+  </Screen>
+);
+
+const TweetDetails= ()=>(
+  <Screen>
+    <Text>Tweet Details</Text>
+  </Screen>
+);
+
+
+const Stack=createStackNavigator();
+
+const StackNavigator=()=>(
+  <Stack.Navigator initialRouteName="Tweets">
+    <Stack.Screen name="TweetDetails" component={TweetDetails}/>
+    <Stack.Screen name="Tweets" component={Tweets}/>
+  </Stack.Navigator>
+)
+
 
 export default function App() {
 
- 
-
-
-  
   return (
-    <ListingEditScreen />
+    <NavigationContainer>
+      <StackNavigator />
+    </NavigationContainer>
   );
 }
 
