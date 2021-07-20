@@ -74,7 +74,7 @@ const TabNavigator =()=>(
 
     }}
   >
-    <Tab.Screen name="Feed" component={Tweets}
+    <Tab.Screen name="Feed" component={StackNavigator}
       options={
         {
           tabBarIcon:({size,color})=> <MaterialCommunityIcons name="home" size={size} color={color}/>
