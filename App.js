@@ -6,9 +6,11 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import { Screen } from './app/components/Screen';
 
-const Tweets= ()=>(
+const Tweets= ({navigation})=>(
   <Screen>
     <Text>Tweets</Text>
+    <Button title="View Tweets"
+    onPress={()=> navigation.navigate("TweetDetails")} />
   </Screen>
 );
 
