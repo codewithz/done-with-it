@@ -3,14 +3,23 @@ import React,{useState,useEffect} from 'react';
 import { StyleSheet, Text, View ,StatusBar,TextInput,Switch,Button,Image} from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/core';
 
 import { Screen } from './app/components/Screen';
+
+const Link = ()=> {
+  const navigation=useNavigation();
+return(
+  <Button title="Click Me" 
+    onPress={()=>navigation.navigate("TweetDetails")}
+  />
+);
+}
 
 const Tweets= ({navigation})=>(
   <Screen>
     <Text>Tweets</Text>
-    <Button title="View Tweets"
-    onPress={()=> navigation.navigate("TweetDetails")} />
+    <Link />
   </Screen>
 );
 
