@@ -4,6 +4,7 @@ import { StyleSheet, Text, View ,StatusBar,TextInput,Switch,Button,Image} from '
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/core';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { Screen } from './app/components/Screen';
 
@@ -23,11 +24,19 @@ const Tweets= ({navigation})=>(
   </Screen>
 );
 
+const Account= ()=>(
+  <Screen>
+    <Text>Account</Text>
+  </Screen>
+)
+
 const TweetDetails= ({route})=>(
   <Screen>
     <Text>Tweet Details {route.params.id}</Text>
   </Screen>
 );
+
+
 
 
 const Stack=createStackNavigator();
@@ -52,12 +61,20 @@ const StackNavigator=()=>(
   </Stack.Navigator>
 )
 
+const Tab=createBottomTabNavigator();
+const TabNavigator =()=>(
+  <Tab.Navigator>
+    <Tab.Screen name="Feed" component={Tweets}/>
+    <Tab.Screen name="Account" component={Account}/>
+  </Tab.Navigator>
+)
+
 
 export default function App() {
 
   return (
     <NavigationContainer>
-      <StackNavigator />
+     <TabNavigator />
     </NavigationContainer>
   );
 }
