@@ -1,6 +1,7 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import { StyleSheet, View } from 'react-native';
 import * as Yup from 'yup';
+import * as Location from 'expo-location';
 
 import { Screen } from '../components/Screen';
 import { AppForm } from '../components/AppForm';
@@ -9,22 +10,18 @@ import { AppFormPicker } from '../components/AppFormPicker';
 import { values } from 'lodash';
 import { SubmitButton } from '../components/SubmitButton';
 import { CategoryPickerItem } from '../components/CategoryPickerItem';
+import { FormImagePicker } from '../components/FormImagePicker';
+
 
 const validationSchema=Yup.object().shape({
     title:Yup.string().required().min(1).label("Title"),
     price:Yup.number().required().min(1).max(10000).label("Price"),
     description:Yup.string().label("Description"),
-    category:Yup.object().required().nullable().label("Category")
+    category:Yup.object().nullable().label("Category"),
+    images:Yup.array().min(1,"Please select atleast one image")
 
 })
 
-
-  
-  
- 
-  
-   
-  
 
 const categories = [
     { label: "Furniture", value: 1 ,backgroundColor:"#fc5c65",icon:"floor-lamp"},
@@ -38,7 +35,28 @@ const categories = [
   ];
 
 
-export function ListingEditScreen(props) {
+export function ListingEditScreen() {
+
+    const [location,setLocation]=useState();
+
+    const getLocation = async ()=>{
+        const result=await Location.requestPermissionsAsync();
+        if(!result.granted){
+            return;
+        }
+        else{
+            const result=await Location.getCurrentPositionAsync();
+            console.log("Location",result)
+            setLocation({
+                latitude:result.coords.latitude,
+                longitude:result.coords.longitude});
+            
+        }
+    }
+    useEffect(()=>{
+        getLocation();
+    },[])
+
  return (
       <Screen style={styles.container}>
 
@@ -47,13 +65,16 @@ export function ListingEditScreen(props) {
                 title:"",
                 price:"",
                 description:"",
-                category:null
+                category:null,
+                images:[]
             }}
-            onSubmit={(values)=>console.log(values)}
+            onSubmit={(values)=>console.log(location,values)}
             validationSchema={validationSchema}
           
           >
 
+            <FormImagePicker name="images" />
+        
             <AppFormField 
                 name="title"
                 placeholder="Title"
