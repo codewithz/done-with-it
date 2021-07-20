@@ -63,7 +63,16 @@ const StackNavigator=()=>(
 
 const Tab=createBottomTabNavigator();
 const TabNavigator =()=>(
-  <Tab.Navigator>
+  <Tab.Navigator
+    tabBarOptions={{
+      activeBackgroundColor:'tomato',
+      activeTintColor:'white',
+      inactiveBackgroundColor:'#eee',
+      inactiveTintColor:'black',
+
+
+    }}
+  >
     <Tab.Screen name="Feed" component={Tweets}/>
     <Tab.Screen name="Account" component={Account}/>
   </Tab.Navigator>
