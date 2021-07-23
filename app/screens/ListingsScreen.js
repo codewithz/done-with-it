@@ -5,30 +5,26 @@ import { Screen } from '../components/Screen'
 import { Card } from '../components/Card'
 import colors from '../config/colors'
 import listingsApi from '../api/listings';
+import { AppText } from '../components/AppText'
+import { AppButton } from '../components/AppButton'
 
-
-// const listings=[
-//     {
-//        id:1,
-//        title:'Red Jacket for Sale!',
-//        price:100,
-//        image:require('../assets/jacket.jpg') 
-//     },
-//     {
-//         id:2,
-//         title:'Couch in great condition',
-//         price:1000,
-//         image:require('../assets/couch.jpg')
-//     }
-// ]
 
 export  function ListingsScreen({navigation}) {
 
     const [listings,setListings]=useState([]);
+    const [error,setError]=useState(false);
+
 
     const loadListings= async()=>{
         const response =await listingsApi.getListings();
-        setListings(response.data);
+        if(!response.ok){
+            setError(true);
+           return;
+        }
+        else{
+            setError(false);
+            setListings(response.data);
+        }
     }
 
     useEffect(() => {
@@ -37,6 +33,11 @@ export  function ListingsScreen({navigation}) {
 
     return (
        <Screen style={styles.screen}>
+           {error && 
+           <>
+           <AppText>Couldn't retrive listings</AppText>
+           <AppButton title="Retry" onPress={loadListings}/>
+           </>}
            <FlatList
             data={listings}
             keyExtractor={listing=>listing.id.toString()}
