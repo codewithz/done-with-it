@@ -5,6 +5,7 @@ import * as Location from 'expo-location';
 import listingApi from '../api/listings';
 
 import { Screen } from '../components/Screen';
+import { UploadScreen } from './UploadScreen';
 import { AppForm } from '../components/AppForm';
 import { AppFormField } from '../components/AppFormField';
 import { AppFormPicker } from '../components/AppFormPicker';
@@ -39,14 +40,16 @@ const categories = [
 
 export function ListingEditScreen() {
 
-   
-
     const [location,setLocation]=useState();
+    const [uploadVisible,setUploadVisible]=useState(false);
+    const [progress,setProgress]=useState(0);
 
     const handleSubmit = async (listing)=>{
+        setUploadVisible(true);
        const result=await listingApi.addListing({...listing,location},
-        (progress)=>console.log('LES'+progress)
+        (progress)=>setProgress(progress)
         );
+        setUploadVisible(false);
        if(!result.ok){
            console.log(result)
           alert('Could not save listing');
@@ -77,7 +80,7 @@ export function ListingEditScreen() {
 
  return (
       <Screen style={styles.container}>
-
+          <UploadScreen progress={progress} visible={uploadVisible}/>
           <AppForm
             initialValues={{
                 title:"",
