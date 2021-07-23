@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import { StyleSheet, Text, View ,FlatList} from 'react-native'
+import { StyleSheet, Text, View ,FlatList,ActivityIndicator} from 'react-native'
 
 import { Screen } from '../components/Screen'
 import { Card } from '../components/Card'
@@ -13,10 +13,13 @@ export  function ListingsScreen({navigation}) {
 
     const [listings,setListings]=useState([]);
     const [error,setError]=useState(false);
+    const [loading,setLoading]=useState(false);
 
 
     const loadListings= async()=>{
+        setLoading(true);
         const response =await listingsApi.getListings();
+        setLoading(false);
         if(!response.ok){
             setError(true);
            return;
@@ -38,6 +41,9 @@ export  function ListingsScreen({navigation}) {
            <AppText>Couldn't retrive listings</AppText>
            <AppButton title="Retry" onPress={loadListings}/>
            </>}
+
+            <ActivityIndicator animating={loading}  color={colors.primary} />
+
            <FlatList
             data={listings}
             keyExtractor={listing=>listing.id.toString()}
