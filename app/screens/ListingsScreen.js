@@ -7,6 +7,7 @@ import colors from '../config/colors'
 import listingsApi from '../api/listings';
 import { AppText } from '../components/AppText'
 import { AppButton } from '../components/AppButton'
+import { AppActivityIndicator } from '../components/AppActivityIndicator'
 
 
 export  function ListingsScreen({navigation}) {
@@ -42,9 +43,9 @@ export  function ListingsScreen({navigation}) {
            <AppButton title="Retry" onPress={loadListings}/>
            </>}
 
-            <ActivityIndicator animating={loading}  color={colors.primary} />
+          <AppActivityIndicator visible={true} />
 
-           <FlatList
+           { <FlatList
             data={listings}
             keyExtractor={listing=>listing.id.toString()}
             renderItem={
@@ -58,7 +59,7 @@ export  function ListingsScreen({navigation}) {
             }
            
            >
-           </FlatList>
+           </FlatList> }
 
 
        </Screen>
