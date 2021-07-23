@@ -26,13 +26,16 @@ const AppNavigator= ()=>(
         }
         />
         <Tab.Screen name="ListingEdit" component={ListingEditScreen}
-           options={
-            {
-                tabBarButton:()=> <NewListButton />,
+           options={ ({navigation})=>({
+                tabBarButton:()=> (
+               <NewListButton 
+                onPress={()=>navigation.navigate("ListingEdit")} />
+                ),
                 tabBarIcon:({color,size})=> 
                 <MaterialCommunityIcons name="plus-circle" color={color} size={size}/>
-            }
-        }
+            
+                 })
+                }
         />
         <Tab.Screen name="Account" component={AccountNavigator}
                options={

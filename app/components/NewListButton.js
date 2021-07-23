@@ -1,14 +1,17 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View,TouchableOpacity } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import colors from '../config/colors';
 
-export function NewListButton(props) {
+
+export function NewListButton({onPress}) {
  return (
+    <TouchableOpacity onPress={onPress}>
       <View style={styles.container}>
           <MaterialCommunityIcons name="plus-circle" color={colors.white} size={30}/>
       </View>
+      </TouchableOpacity>
     )
 }
 
