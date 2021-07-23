@@ -2,6 +2,7 @@ import React,{useEffect,useState} from 'react';
 import { StyleSheet, View } from 'react-native';
 import * as Yup from 'yup';
 import * as Location from 'expo-location';
+import listingApi from '../api/listings';
 
 import { Screen } from '../components/Screen';
 import { AppForm } from '../components/AppForm';
@@ -11,6 +12,7 @@ import { values } from 'lodash';
 import { SubmitButton } from '../components/SubmitButton';
 import { CategoryPickerItem } from '../components/CategoryPickerItem';
 import { FormImagePicker } from '../components/FormImagePicker';
+import listings from '../api/listings';
 
 
 const validationSchema=Yup.object().shape({
@@ -37,7 +39,21 @@ const categories = [
 
 export function ListingEditScreen() {
 
+   
+
     const [location,setLocation]=useState();
+
+    const handleSubmit = async (listing)=>{
+       const result=await listingApi.addListing({...listing,location});
+       if(!result.ok){
+           console.log(result)
+          alert('Could not save listing');
+          return; 
+       }
+       else{
+           alert('Success');
+       }
+    }
 
     const getLocation = async ()=>{
         const result=await Location.requestPermissionsAsync();
@@ -68,7 +84,8 @@ export function ListingEditScreen() {
                 category:null,
                 images:[]
             }}
-            onSubmit={(values)=>console.log(location,values)}
+          //  onSubmit={(values)=>console.log(location,values)}
+            onSubmit={handleSubmit}
             validationSchema={validationSchema}
           
           >
