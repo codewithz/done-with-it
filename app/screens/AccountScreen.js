@@ -13,18 +13,20 @@ const menuItems=[
             name:'format-list-bulleted',
             backgroundColor:colors.primary
         }
+        
     },
     {
         title:'My Messages',
         icon:{
             name:'email',
             backgroundColor:colors.secondary
-        }
+        },
+        targetScreen:"Messages",
     }
 
 ]
 
-export  function AccountScreen() {
+export  function AccountScreen({navigation}) {
     return (
        <Screen style={styles.screen}>
         <View style={styles.container}>
@@ -48,6 +50,7 @@ export  function AccountScreen() {
                     backgroundColor={item.icon.backgroundColor}
                     />
                 }
+                onPress={()=>navigation.navigate(item.targetScreen)}
             />
         }
         >
